@@ -58,7 +58,7 @@ class PautasParser(HTMLParser):
     def handle_endtag(self, tag: str) -> None:
         if tag == self.active_heading:
             title = " ".join(" ".join(self.heading_text).split())
-            if tag == "h1" and "PAUTAS DAS SESSÕES" in title.upper().replace("Õ", "O"):
+            if tag == "h1" and "PAUTAS DAS SESSÕES" in title.upper():
                 self.in_section = True
             elif self.in_section and tag in ("h2", "h3"):
                 if YEAR_RE.fullmatch(title):
